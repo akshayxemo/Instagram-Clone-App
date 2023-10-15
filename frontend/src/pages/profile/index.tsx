@@ -1,13 +1,11 @@
 import DesktopDashboard from "../../layout/desktop.dashboard";
-
-const Home = () => {
+const Profile = () => {
   return (
     <>
       <DesktopDashboard>
-        <h1 className="text-yellow-500">haa ahhahahah</h1>
+        <div></div>
       </DesktopDashboard>
     </>
   );
 };
-
-export default Home;
+export default Profile;

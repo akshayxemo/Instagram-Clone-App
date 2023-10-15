@@ -1,23 +1,19 @@
 import { useState } from "react";
 import Logo from "../components/Logo";
 import { FiSearch } from "react-icons/fi";
-import { PiHouse, PiHouseFill } from "react-icons/pi";
-import {
-  FaRegCompass,
-  FaCompass,
-  FaHeart,
-  FaRegHeart,
-  FaBars,
-} from "react-icons/fa6";
+// import { PiHouse, PiHouseFill } from "react-icons/pi";
+import { FaHeart, FaRegHeart, FaBars } from "react-icons/fa6";
 import {
   RiFolderVideoFill,
   RiFolderVideoLine,
   RiSendPlaneFill,
   RiSendPlaneLine,
 } from "react-icons/ri";
-import { BiMessageSquareAdd } from "react-icons/bi";
+import { BiMessageSquareAdd, BiCompass, BiSolidCompass } from "react-icons/bi";
+import { RiHome2Line, RiHome2Fill } from "react-icons/ri";
+import Switcher from "../components/Switcher";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import SideNavItem from "../components/SideNavItem";
 
 const Sidebar = () => {
@@ -28,16 +24,16 @@ const Sidebar = () => {
   };
   return (
     <>
-      <div className="w-60 px-3 py-8 h-full border-r border-gray-700/50 text-white flex flex-col justify-between">
+      <div className="w-60 px-3 py-8 h-full border-r dark:border-gray-700/50 border-gray-700/20 flex flex-col justify-between">
         <div>
           <Logo height={"30"} class={"w-full px-4 py-2"} />
-          <nav className="mt-8">
+          <nav className="mt-7">
             <div className="flex flex-col gap-2">
               <SideNavItem
                 text="Home"
                 path="/"
-                element={<PiHouse />}
-                activeElement={<PiHouseFill />}
+                element={<RiHome2Line />}
+                activeElement={<RiHome2Fill />}
                 activationFunc={handleNavChange}
                 activeNav={active}
               />
@@ -51,8 +47,8 @@ const Sidebar = () => {
               <SideNavItem
                 text="Explore"
                 path="/"
-                element={<FaRegCompass />}
-                activeElement={<FaCompass />}
+                element={<BiCompass />}
+                activeElement={<BiSolidCompass />}
                 activationFunc={handleNavChange}
                 activeNav={active}
               />
@@ -87,21 +83,22 @@ const Sidebar = () => {
                 activationFunc={handleNavChange}
                 activeNav={active}
               />
-
-              <div className="p-3 hover:bg-white/10 rounded-md">
-                <Link to={`/`} onClick={() => handleNavChange("profile")}>
-                  <div
-                    className={
-                      active === "profile"
-                        ? `flex items-center justify-start gap-3 text-[15px] font-sans font-semibold`
-                        : `flex items-center justify-start gap-3 text-[15px] font-sans`
-                    }
-                  >
-                    <div className="p-3 rounded-full bg-white/30"></div>
-                    <span>Profile</span>
-                  </div>
-                </Link>
-              </div>
+              <SideNavItem
+                text="Profile"
+                path={`/profile/${"ha_"}`}
+                element={
+                  <>
+                    <div className="p-3 rounded-full dark:bg-white/30 bg-black/20"></div>
+                  </>
+                }
+                activeElement={
+                  <>
+                    <div className="p-3 rounded-full dark:bg-white/30 bg-black/20 border dark:border-white border-black"></div>
+                  </>
+                }
+                activationFunc={handleNavChange}
+                activeNav={active}
+              />
             </div>
           </nav>
         </div>
@@ -114,6 +111,7 @@ const Sidebar = () => {
             activationFunc={handleNavChange}
             activeNav={active}
           />
+          <Switcher />
         </div>
       </div>
     </>
