@@ -1,5 +1,4 @@
-import LogoWhite from "../assets/instagram_logo_white.png";
-
+import LogoDark from "../assets/instagram_logo_black.png";
 interface Props {
   height?: string;
   class?: string;
@@ -11,8 +10,9 @@ const Logo = (props: Props) => {
     <>
       <div className={props.class}>
         <img
-          src={LogoWhite}
+          src={LogoDark}
           alt="instagram logo"
+          className="dark:filter dark:invert"
           style={props.height ? { height: props.height + "px" } : {}}
         />
       </div>
